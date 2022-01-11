@@ -13,15 +13,15 @@ class VideoListViewModel {
 
     typealias dataType = [VideoResponse]
 
-    var dataManager: NetworkManager<dataType>
+    private(set) var dataManager: NetworkManager<dataType>
 
     init(dataManager: NetworkManager<dataType>) {
         self.dataManager = dataManager
     }
 
-    @Published var videos = [Video]()
-    @Published var shouldUpdateUI = false
-    @Published var errorMessage : String?
+    @Published private(set) var videos = [Video]()
+    @Published private(set) var shouldUpdateUI = false
+    @Published private(set) var errorMessage : String?
 
     func getVideos() {
         dataManager.makeTheRequest(using: URLStringConstants.shared.videoListURLString) { result in

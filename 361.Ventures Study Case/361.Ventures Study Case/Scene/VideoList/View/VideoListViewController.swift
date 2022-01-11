@@ -10,7 +10,7 @@ import Combine
 
 class VideoListViewController: UIViewController {
 
-    var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
 
     @IBOutlet private weak var videoListTableView: UITableView!
 

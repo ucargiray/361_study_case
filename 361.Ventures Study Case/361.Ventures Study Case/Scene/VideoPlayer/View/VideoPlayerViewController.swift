@@ -12,7 +12,7 @@ class VideoPlayerViewController: UIViewController {
     @IBOutlet weak var videoPlayerView: VideoPlayerView!
     var viewModel: VideoPlayerViewModel!
 
-    lazy var loadingIndicator: UIActivityIndicatorView = {
+    lazy private var loadingIndicator: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.color = .red

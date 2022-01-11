@@ -12,27 +12,28 @@ import UIKit
 
 class VideoPlayerView: UIView {
 
-    @IBAction func timeSliderValueChanged(_ sender: Any) {
+    @IBAction private func timeSliderValueChanged(_ sender: Any) {
         guard let duration = player?.currentItem?.duration else { return }
         let value = Float64(timeSlider.value) * CMTimeGetSeconds(duration)
         let seekTime = CMTime(value: CMTimeValue(value), timescale: 1)
         player?.seek(to: seekTime)
     }
-    @IBOutlet weak var timeSlider: UISlider!
-    @IBOutlet weak var popupAnimationView: PopUpAnimation!
+    
+    @IBOutlet private weak var timeSlider: UISlider!
+    @IBOutlet private weak var popupAnimationView: PopUpAnimation!
     weak var delegate: VideoPlayerDelegate?
-    var timeObserver: Any?
+    private var timeObserver: Any?
 
-    @IBAction func pauseButtonClicked(_ sender: Any) {
+    @IBAction private func pauseButtonClicked(_ sender: Any) {
         showAnimationView(isPause: true)
         self.delegate?.shouldPauseTheVideo()
     }
-    @IBAction func playButtonClicked(_ sender: Any) {
+    @IBAction private func playButtonClicked(_ sender: Any) {
         showAnimationView(isPause: false)
         self.delegate?.shouldStartTheVideo()
     }
 
-    func showAnimationView(isPause: Bool) {
+    private func showAnimationView(isPause: Bool) {
         if let player = player {
             if !(player.isPlaying) && !isPause {
                 self.popupAnimationView.isHidden = false
@@ -52,7 +53,7 @@ class VideoPlayerView: UIView {
         }
     }
 
-    func updateVideoPlayerSlider() {
+    private func updateVideoPlayerSlider() {
         guard let currentTime = player?.currentTime() else { return }
         let currentTimeInSeconds = CMTimeGetSeconds(currentTime)
         timeSlider.value = Float(currentTimeInSeconds)

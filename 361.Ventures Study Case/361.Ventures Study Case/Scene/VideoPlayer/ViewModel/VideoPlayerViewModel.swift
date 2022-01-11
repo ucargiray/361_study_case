@@ -10,7 +10,7 @@ import Foundation
 
 class VideoPlayerViewModel {
 
-    var selectedVideo: Video?
+    private(set) var selectedVideo: Video?
 
     init(selectedVideo: Video) {
         self.selectedVideo = selectedVideo
