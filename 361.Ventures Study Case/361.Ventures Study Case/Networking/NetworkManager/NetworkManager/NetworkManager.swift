@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkManager<T : Codable>: NetworkManagerProtocol {
+final class NetworkManager<T : Codable>: NetworkManagerProtocol {
 
     typealias dataType = T
 
